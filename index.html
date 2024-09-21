@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Rock Paper Scissors</title>
+    </head>    
+
+<script>
+    function add(num1, num2) {
+        return num1 + num2;
+    }
+
+    function getComputerChoice() {
+        // Once call randomly get a value for these choices: rock paper and scissors
+        let choice = "NONE";
+        const minNum = Math.ceil(0);
+        const maxNum = Math.floor(3);
+        let randChoice = Math.floor(Math.random() * (maxNum - minNum) + minNum);
+        // Check if random value is equal to one of these values
+        if (randChoice == 0){
+            choice = "ROCK";
+        }
+        if (randChoice == 1) {
+            choice = "PAPER";
+        }
+        if (randChoice == 2) {
+            choice = "SCISSORS";
+        }
+        // If they are, output the value that was chosen
+        return choice;
+    }
+
+    console.log("Hello World");
+    console.log(add(10,10));
+    // Call function to get computer choice
+    console.log("Computer Choice is: " + getComputerChoice());
+    </script>
+
+</html>
