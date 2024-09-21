@@ -6,10 +6,6 @@
     </head>    
 
 <script>
-    function add(num1, num2) {
-        return num1 + num2;
-    }
-
     function getComputerChoice() {
         // Once call randomly get a value for these choices: rock paper and scissors
         let choice = "NONE";
@@ -30,10 +26,27 @@
         return choice;
     }
 
+    function getHumanChoice() {
+        // Prompt user to select one of the values: Rock, Paper, Scissors
+        let value = prompt("Select with number: 1) Rock 2) Paper 3) Scissors");
+        let choice = "";
+        // Once input is recieved, get the value from input and return it
+        if (value == 1) {
+            choice = "ROCK";
+        }
+        if (value == 2) {
+            choice = "PAPER";
+        }
+        if (value == 3) {
+            choice = "SCISSORS";
+        }
+        return choice;
+    }
     console.log("Hello World");
-    console.log(add(10,10));
     // Call function to get computer choice
     console.log("Computer Choice is: " + getComputerChoice());
+    // Call function to get human choice
+    console.log("User Choice is: " + getHumanChoice());
     </script>
 
 </html>
