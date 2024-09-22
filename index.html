@@ -100,7 +100,7 @@
         // Set min number value of 0
         const minNum = Math.ceil(0);
         // set max number value of 2
-        const maxNum = Math.floor(2);
+        const maxNum = Math.floor(3);
         // randomly choose between the values of 0, 1, 2 to determine computer choice
         let randChoice = Math.floor(Math.random() * (maxNum - minNum) + minNum);
         // Check if random value is equal to one of these values
@@ -118,20 +118,8 @@
     }
 
     function getHumanChoice() {
-        // Prompt user to select one of the values: Rock, Paper, Scissors
-        let value = prompt("Select with number: 1) Rock 2) Paper 3) Scissors");
-        let choice = "";
-        // Once input is recieved, get the value from input and return it
-        if (value == 1) {
-            choice = "ROCK";
-        }
-        if (value == 2) {
-            choice = "PAPER";
-        }
-        if (value == 3) {
-            choice = "SCISSORS";
-        }
-        return choice;
+        // Prompt user to type Rock, Paper,or Scissors
+        return value = prompt("Rock, Paper, or Scissors?");
     }
 
     // get parameters prompt to play round
@@ -141,18 +129,29 @@
         // Display what the computer chose
         console.log("Opponnent chose: " + computerChoice);
         // Begin matchup for this round and output the end result
-        let endRound = checkMatchups(humanChoice, computerChoice);
+        let endRound = checkMatchups(humanChoice.toUpperCase(), computerChoice.toUpperCase());
         // Display end result
         console.log(endRound);
+        // Reset strike count
+        playerRoundStrike = 0;
+        computerRoundStrike = 0;
         // Display human score
         console.log("Human Score: " + humanScore);
         // Display computer score
         console.log("Computer Score: " + computerScore);
     }
 
-    console.log("Hello World");
-    // Play round for game
-    playRound(getHumanChoice(), getComputerChoice());
+    function playGame() {
+        let round = 0
+        while (round < 5) {
+            // Play round for game
+            playRound(getHumanChoice(), getComputerChoice());
+            round += 1;
+        }
+    }
+
+    console.log("BEGIN GAME!");
+    playGame();
     </script>
 
 </html>
