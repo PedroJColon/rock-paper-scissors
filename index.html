@@ -142,8 +142,9 @@
     }
 
     function playGame() {
-        let round = 0
-        while (round < 5) {
+        let round = 0;
+        const maxRound = 5;
+        while (round < maxRound) {
             // Play round for game
             playRound(getHumanChoice(), getComputerChoice());
             round += 1;
