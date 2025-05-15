@@ -1,0 +1,27 @@
+.header {
+    display: flex;
+    flex: auto;
+    justify-content: center;
+    align-items: center;
+}
+
+.rps-input {
+    display: flex;
+    flex: auto;
+    align-items: center;
+    justify-content: space-evenly;
+    padding: 2%;
+}
+.decision-board {
+    display: flex;
+    flex: auto;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.score-board {
+    display: flex;
+    flex: auto;
+    align-items: center;
+    justify-content: space-evenly;
+}
