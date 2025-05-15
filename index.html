@@ -1,158 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta charset="UTF-8">
         <title>Rock Paper Scissors</title>
-    </head>    
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="styles.css">
+    </head>
 
-<script>
-    // Keep track of player and computer score for game
-    let humanScore = 0;
-    let computerScore = 0;
-    // Keep track of which player and computer have the higher strike count
-    let playerRoundStrike = 0;
-    let computerRoundStrike = 0;
+<body>
+    <h1 class="header">Rock Paper Scissors!!!</h1>
+    <div class="rps-input">
+        <button onclick="selectRock()">Rock</button>
+        <button onclick="selectPaper()">Paper</button>
+        <button onclick="selectScissors()">Scissors</button>
+    </div>
+    <div class="decision-board">
+        <p>Player Chose: </p>
+        <p>Opponent Chose: </p>
+        <p>Winner: </p>
+    </div>
 
-    function determineVictor() {
-        let result = ""; // Set result to be empty
-        // Check whoever has the lowest round strike within current round
-        if (playerRoundStrike < computerRoundStrike) {
-            result = "YOU WIN!"
-            humanScore += 1;
-        }
-        else {
-            result = "YOU LOSE!"
-            computerScore += 1;
-        }
-        return result;
-    }
+    <div class="score-board">
+        <p>Player: 999</p>
+        <p>Opponent: 999</p>
+    </div>
 
-    function checkRockPaper(humanChoice, computerChoice) {
-        let isMatchup = false;
-        // Check if this matchup is valid
-        if ((humanChoice == "ROCK" || computerChoice == "ROCK") && 
-            (humanChoice == "PAPER" || computerChoice == "PAPER")) {
-            // Give strike point to whichever one has the losing matchup
-            if (humanChoice == "ROCK") {
-                playerRoundStrike += 1 
-            }
-            if (computerChoice == "ROCK") {
-                computerRoundStrike += 1;
-            }
-            isMatchup = true;
-        }
-        return isMatchup;
-    }
-
-    function checkRockScissors(humanChoice, computerChoice) {
-        let isMatchup = false;
-        // Check if this matchup is valid
-        if ((humanChoice == "ROCK" || computerChoice == "ROCK") && 
-            (humanChoice == "SCISSORS" || computerChoice == "SCISSORS")) {
-            // Give strike point to whichever one has the losing matchup
-            if (humanChoice == "SCISSORS") {
-                playerRoundStrike += 1 
-            }
-            if (computerChoice == "SCISSORS") {
-                computerRoundStrike += 1;
-            }
-            isMatchup = true;
-        }
-        return isMatchup;
-    }
-
-    function checkPaperScissors(humanChoice, computerChoice) {
-        let isMatchup = false;
-        // Check if this matchup is valid
-        if ((humanChoice == "PAPER" || computerChoice == "PAPER") && 
-            (humanChoice == "SCISSORS" || computerChoice == "SCISSORS")) {
-            // Give strike point to whichever one has the losing matchup
-            if (humanChoice == "PAPER") {
-                playerRoundStrike += 1 
-            }
-            if (computerChoice == "PAPER") {
-                computerRoundStrike += 1;
-            }
-            isMatchup = true;
-        }
-        return isMatchup;
-    }
-
-    function checkMatchups(humanChoice, computerChoice) {
-        // Set default value to DRAW in case both users are tied
-        let result = "DRAW!";
-        // Check to see which matchup it is
-        if (checkRockPaper(humanChoice, computerChoice)) {
-            result = determineVictor()
-        }
-        if (checkPaperScissors(humanChoice, computerChoice)) {
-            result = determineVictor()
-        }
-        if (checkRockScissors(humanChoice, computerChoice)) {
-            result = determineVictor()
-        }
-        return result;
-    }
-
-    function getComputerChoice() {
-        // Once call randomly get a value for these choices: rock paper and scissors
-        let choice = "NONE";
-        // Set min number value of 0
-        const minNum = Math.ceil(0);
-        // set max number value of 2
-        const maxNum = Math.floor(3);
-        // randomly choose between the values of 0, 1, 2 to determine computer choice
-        let randChoice = Math.floor(Math.random() * (maxNum - minNum) + minNum);
-        // Check if random value is equal to one of these values
-        if (randChoice == 0){
-            choice = "ROCK";
-        }
-        if (randChoice == 1) {
-            choice = "PAPER";
-        }
-        if (randChoice == 2) {
-            choice = "SCISSORS";
-        }
-        // If they are, output the value that was chosen
-        return choice;
-    }
-
-    function getHumanChoice() {
-        // Prompt user to type Rock, Paper,or Scissors
-        return value = prompt("Rock, Paper, or Scissors?");
-    }
-
-    // get parameters prompt to play round
-    function playRound(humanChoice, computerChoice) {
-        // Display what the user chose
-        console.log("You chose: " + humanChoice);
-        // Display what the computer chose
-        console.log("Opponnent chose: " + computerChoice);
-        // Begin matchup for this round and output the end result
-        let endRound = checkMatchups(humanChoice.toUpperCase(), computerChoice.toUpperCase());
-        // Display end result
-        console.log(endRound);
-        // Reset strike count
-        playerRoundStrike = 0;
-        computerRoundStrike = 0;
-        // Display human score
-        console.log("Human Score: " + humanScore);
-        // Display computer score
-        console.log("Computer Score: " + computerScore);
-    }
-
-    function playGame() {
-        let round = 0;
-        const maxRound = 5;
-        while (round < maxRound) {
-            // Play round for game
-            playRound(getHumanChoice(), getComputerChoice());
-            round += 1;
-        }
-    }
-
-    console.log("BEGIN GAME!");
-    playGame();
-    </script>
-
+    <script src="rps.js"></script>
+</body>
 </html>
