@@ -5,8 +5,37 @@
     let playerRoundStrike = 0;
     let computerRoundStrike = 0;
 
-    let playerChoice = ""
+    let round = 0;
+    const maxRound = 5;
 
+    function selectRPSChoice(button_id) {
+        console.log("User chose: " + button_id)
+        playerChoice = button_id;
+        playRound(playerChoice, getComputerChoice());
+    }
+
+    function resetGame() {
+        round = 0;
+        humanScore = 0;
+        computerScore = 0;
+        playerRoundStrike = 0;
+        computerRoundStrike = 0;
+        resetButton.style.display = "none";
+    }
+
+    const rpsButtons = document.querySelectorAll("button")
+    rpsButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+            if (button.id != "reset") {
+                selectRPSChoice(button.id);
+            }
+        });
+    });
+
+    const resetButton = document.querySelector("#reset")
+    resetButton.style.display = "none";
+    resetButton.addEventListener("click", resetGame);
+    
 
     function determineVictor() {
         let result = ""; // Set result to be empty
@@ -112,37 +141,29 @@
         return choice;
     }
 
-    function getHumanChoice() {
-        // Prompt user to type Rock, Paper,or Scissors
-        
-        return value = prompt("Rock, Paper, or Scissors?");
-    }
-
-    function selectRock() {
-        console.log("You chose Rock!")
-        playerChoice = "rock"
-    }
-
-    function selectPaper() {
-        console.log("You chose Paper!")
-        playerChoice = "paper"
-    }
-
-    function selectScissors() {
-        console.log("You chose Scissors!")
-        playerChoice = "scissors"
-    }
-
     // get parameters prompt to play round
     function playRound(humanChoice, computerChoice) {
         // Display what the user chose
         console.log("You chose: " + humanChoice);
+        const decisionContainer = document.querySelector("#decision-container");
+        const userChoice = document.createElement("p");
+        userChoice.classList.add("user-selection");
+        userChoice.textContent = "User chose: " + humanChoice;
+        decisionContainer.appendChild(userChoice);
         // Display what the computer chose
         console.log("Opponnent chose: " + computerChoice);
+        const opponentChoice = document.createElement("p");
+        opponentChoice.classList.add("computer-selection");
+        opponentChoice.textContent = "Computer chose: " + computerChoice;
+        decisionContainer.appendChild(opponentChoice);
         // Begin matchup for this round and output the end result
         let endRound = checkMatchups(humanChoice.toUpperCase(), computerChoice.toUpperCase());
         // Display end result
         console.log(endRound);
+        const resultWinner = document.createElement("p");
+        resultWinner.classList.add("result-factor");
+        resultWinner.textContent = endRound;
+        decisionContainer.appendChild(resultWinner);
         // Reset strike count
         playerRoundStrike = 0;
         computerRoundStrike = 0;
@@ -150,10 +171,19 @@
         console.log("Human Score: " + humanScore);
         // Display computer score
         console.log("Computer Score: " + computerScore);
+        
+        round += 1;
+        if (round >= maxRound) {
+            stopGame();
+        }
+    }
+
+    function stopGame() {
+        alert("Game Over!");
+        resetButton.style.display = "block";
     }
 
     function playGame() {
-        let round = 0;
         const maxRound = 5;
         while (round < maxRound) {
             // Play round for game
@@ -161,5 +191,3 @@
             round += 1;
         }
     }
-
-    console.log("BEGIN GAME!");
