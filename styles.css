@@ -5,6 +5,11 @@
     align-items: center;
 }
 
+body {
+    background-color: #61A9EA;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+}
 .rps-input {
     display: flex;
     flex: auto;
@@ -24,4 +29,12 @@
     flex: auto;
     align-items: center;
     justify-content: space-evenly;
+}
+
+.restart-board {
+    display: flex;
+    flex: auto;
+    align-items: center;
+    justify-content: center;
+    padding: 2%;
 }
