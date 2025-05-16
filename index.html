@@ -10,21 +10,25 @@
 <body>
     <h1 class="header">Rock Paper Scissors!!!</h1>
     <div class="rps-input">
-        <button onclick="selectRock()">Rock</button>
-        <button onclick="selectPaper()">Paper</button>
-        <button onclick="selectScissors()">Scissors</button>
+        <button id="rock">Rock</button>
+        <button id="paper">Paper</button>
+        <button id="scissors">Scissors</button>
     </div>
     <div class="decision-board">
-        <p>Player Chose: </p>
-        <p>Opponent Chose: </p>
-        <p>Winner: </p>
+        <div id="decision-container">
+        </div>
     </div>
 
     <div class="score-board">
+        <div id="score-container">
+        </div>
         <p>Player: 999</p>
         <p>Opponent: 999</p>
     </div>
 
+    <div class="restart-board">
+        <button id="reset">Reset Game</button>
+    </div>
     <script src="rps.js"></script>
 </body>
 </html>
