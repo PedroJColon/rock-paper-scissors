@@ -1,22 +1,35 @@
-.header {
-    display: flex;
-    flex: auto;
-    justify-content: center;
-    align-items: center;
-}
-
 body {
     background-color: #61A9EA;
     font-family: 'Courier New', Courier, monospace;
     font-weight: bold;
 }
+
+button {
+    background-color:#AECFEB;
+    font-weight: bolder;
+    border-radius: 8px;
+}
+
+button:active {
+    background-color:#1c82dc;
+}
+
+.header {
+    display: flex;
+    flex: auto;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
 .rps-input {
     display: flex;
     flex: auto;
     align-items: center;
     justify-content: space-evenly;
-    padding: 2%;
+    padding: 25px;
 }
+
 .decision-board {
     display: flex;
     flex: auto;
@@ -24,11 +37,13 @@ body {
     justify-content: center;
     align-items: center;
 }
+
 .score-board {
     display: flex;
     flex: auto;
     align-items: center;
     justify-content: space-evenly;
+    padding-top: 25px;
 }
 
 .restart-board {
@@ -36,5 +51,5 @@ body {
     flex: auto;
     align-items: center;
     justify-content: center;
-    padding: 2%;
+    padding: 12px;
 }
